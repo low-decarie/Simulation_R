@@ -248,8 +248,8 @@ Simulating an experiment
 ========================================================
 
 ```{r}
-experiment1$response <- rnorm(n=length(experiment$mean),
-                             mean=experiment$mean,
+experiment1$response <- rnorm(n=length(experiment1$mean),
+                             mean=experiment1$mean,
                              sd=1)
 ```
 

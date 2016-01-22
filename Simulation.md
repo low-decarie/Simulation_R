@@ -297,15 +297,113 @@ Simulating an experiment
 ========================================================
 
 
+```r
+experiment1$response <- rnorm(n=length(experiment1$mean),
+                             mean=experiment1$mean,
+                             sd=1)
+```
 
+Challenge
+========================================================
 
+1. Plot experiment 1
+2. Analyze experiment 1
+- You know that both factorA and factorB have an additive effect, can you detect this form this experiment?
+- If you can detect an effect, what could you do to save money/time etc in this experiment?
+- If you can not detect an effect, what would you need to do to detect the known effect?
 
+<div class="centered">
 
+<script src="countdown.js" type="text/javascript"></script>
+<script type="application/javascript">
+var myCountdown2 = new Countdown({
+    							time: 300, 
+									width:150, 
+									height:80, 
+									rangeHi:"minute"	// <- no comma on last item!
+									});
 
+</script>
 
+</div>
 
+Solution
+========================================================
+
+1.
+
+```r
+require(ggplot2)
+p <- qplot(data=experiment1,
+           x=factorA,
+           y=response,
+           colour=factorB,
+           geom="boxplot")
+print(p)
+```
+
+![plot of chunk unnamed-chunk-19](Simulation-figure/unnamed-chunk-19-1.png) 
+
+Solution
+========================================================
+
+2.
+
+```r
+fit <- aov(data = experiment1,
+           response~factorA*factorB)
+summary(fit)
+```
 
 ```
-Error in rnorm(n = length(experiment$mean), mean = experiment$mean, sd = 1) : 
-  object 'experiment' not found
+                Df Sum Sq Mean Sq F value Pr(>F)  
+factorA          1  2.518   2.518   3.665 0.0919 .
+factorB          1  0.812   0.812   1.182 0.3086  
+factorA:factorB  1  1.914   1.914   2.786 0.1336  
+Residuals        8  5.496   0.687                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
+
+```r
+plot(fit)
+```
+
+![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-1.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-2.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-3.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-4.png) 
+
+Accelerate the process
+========================================================
+
+Designing the experiment
+
+```r
+require(AlgDesign)
+experiment2 <- gen.factorial(levels=c(3,2,2),
+                             nVars=3,
+                             varNames=c("A","B","C"),
+                             factors="all")
+```
+[Experimental design task view](https://cran.r-project.org/web/views/ExperimentalDesign.html)
+
+
+Challenge
+========================================================
+
+1. Create a data set simulating the effect of waste water runoff and intensive scuba diving for biodiversity (hint: species counts) of coral reefs
+2. Plot the results
+3. Analyze the results (hint: counts are not normaly distributed)
+
+<div class="centered">
+
+<script src="countdown.js" type="text/javascript"></script>
+<script type="application/javascript">
+var myCountdown2 = new Countdown({
+    							time: 300, 
+									width:150, 
+									height:80, 
+									rangeHi:"minute"	// <- no comma on last item!
+									});
+
+</script>
+
+</div>
