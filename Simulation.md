@@ -301,6 +301,17 @@ Simulating an experiment
 experiment1$response <- rnorm(n=length(experiment1$mean),
                              mean=experiment1$mean,
                              sd=1)
+head(experiment1)
+```
+
+```
+      factorA     factorB replicate mean response
+1 FacA_Level1 FacA_Level1         A    2 1.660124
+2 FacA_Level2 FacA_Level1         A    3 4.811453
+3 FacA_Level1 FacA_Level2         A    3 3.832309
+4 FacA_Level2 FacA_Level2         A    4 4.513548
+5 FacA_Level1 FacA_Level1         B    2 2.111171
+6 FacA_Level2 FacA_Level1         B    3 1.869356
 ```
 
 Challenge
@@ -356,13 +367,11 @@ summary(fit)
 ```
 
 ```
-                Df Sum Sq Mean Sq F value Pr(>F)  
-factorA          1  2.518   2.518   3.665 0.0919 .
-factorB          1  0.812   0.812   1.182 0.3086  
-factorA:factorB  1  1.914   1.914   2.786 0.1336  
-Residuals        8  5.496   0.687                 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+                Df Sum Sq Mean Sq F value Pr(>F)
+factorA          1  1.040  1.0403   0.600  0.461
+factorB          1  2.046  2.0464   1.181  0.309
+factorA:factorB  1  0.000  0.0002   0.000  0.991
+Residuals        8 13.859  1.7324               
 ```
 
 ```r

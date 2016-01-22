@@ -251,6 +251,7 @@ Simulating an experiment
 experiment1$response <- rnorm(n=length(experiment1$mean),
                              mean=experiment1$mean,
                              sd=1)
+head(experiment1)
 ```
 
 Challenge
