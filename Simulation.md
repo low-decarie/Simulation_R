@@ -1,7 +1,7 @@
 Simulation
 ========================================================
 author: Etienne Low-Décarie
-date: January 22, 2016
+date: December 13, 2016
 
 Why simulate?
 ========================================================
@@ -35,7 +35,7 @@ sample(x=die, size=1, replace=T)
 ```
 
 ```
-[1] 1
+[1] 4
 ```
 
 Sampling from a population
@@ -62,7 +62,7 @@ hist(die_results,
                 by=1))
 ```
 ***
-![plot of chunk unnamed-chunk-5](Simulation-figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](Simulation-figure/unnamed-chunk-5-1.png)
 
 
 3D die
@@ -156,7 +156,7 @@ sample_norm <- rnorm(n = 10000,
 hist(sample_norm)
 ```
 
-![plot of chunk unnamed-chunk-12](Simulation-figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](Simulation-figure/unnamed-chunk-12-1.png)
 
 Sampling from a distribution
 ========================================================
@@ -200,7 +200,7 @@ dolphins <- rpois(n = 1000,
 hist(dolphins)
 ```
 
-![plot of chunk unnamed-chunk-13](Simulation-figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](Simulation-figure/unnamed-chunk-13-1.png)
 
 
 Solutions
@@ -215,7 +215,7 @@ species <- rlnorm(n = 1000,
 hist(species)
 ```
 
-![plot of chunk unnamed-chunk-14](Simulation-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-14](Simulation-figure/unnamed-chunk-14-1.png)
 
 
 Simulating an experiment
@@ -306,12 +306,12 @@ head(experiment1)
 
 ```
       factorA     factorB replicate mean response
-1 FacA_Level1 FacA_Level1         A    2 1.660124
-2 FacA_Level2 FacA_Level1         A    3 4.811453
-3 FacA_Level1 FacA_Level2         A    3 3.832309
-4 FacA_Level2 FacA_Level2         A    4 4.513548
-5 FacA_Level1 FacA_Level1         B    2 2.111171
-6 FacA_Level2 FacA_Level1         B    3 1.869356
+1 FacA_Level1 FacA_Level1         A    2 1.109709
+2 FacA_Level2 FacA_Level1         A    3 2.685554
+3 FacA_Level1 FacA_Level2         A    3 2.263013
+4 FacA_Level2 FacA_Level2         A    4 2.800142
+5 FacA_Level1 FacA_Level1         B    2 1.854681
+6 FacA_Level2 FacA_Level1         B    3 5.102780
 ```
 
 Challenge
@@ -353,7 +353,7 @@ p <- qplot(data=experiment1,
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-19](Simulation-figure/unnamed-chunk-19-1.png) 
+![plot of chunk unnamed-chunk-19](Simulation-figure/unnamed-chunk-19-1.png)
 
 Solution
 ========================================================
@@ -368,51 +368,26 @@ summary(fit)
 
 ```
                 Df Sum Sq Mean Sq F value Pr(>F)
-factorA          1  1.040  1.0403   0.600  0.461
-factorB          1  2.046  2.0464   1.181  0.309
-factorA:factorB  1  0.000  0.0002   0.000  0.991
-Residuals        8 13.859  1.7324               
+factorA          1  2.756  2.7563   3.395  0.103
+factorB          1  0.004  0.0043   0.005  0.944
+factorA:factorB  1  0.773  0.7731   0.952  0.358
+Residuals        8  6.496  0.8120               
 ```
 
 ```r
 plot(fit)
 ```
 
-![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-1.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-2.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-3.png) ![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-4.png) 
+![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-1.png)![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-2.png)![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-3.png)![plot of chunk unnamed-chunk-20](Simulation-figure/unnamed-chunk-20-4.png)
 
 Accelerate the process
 ========================================================
 
 Designing the experiment
 
-```r
-require(AlgDesign)
-experiment2 <- gen.factorial(levels=c(3,2,2),
-                             nVars=3,
-                             varNames=c("A","B","C"),
-                             factors="all")
+
+
 ```
-[Experimental design task view](https://cran.r-project.org/web/views/ExperimentalDesign.html)
-
-
-Challenge
-========================================================
-
-1. Create a data set simulating the effect of waste water runoff and intensive scuba diving for biodiversity (hint: species counts) of coral reefs
-2. Plot the results
-3. Analyze the results (hint: counts are not normaly distributed)
-
-<div class="centered">
-
-<script src="countdown.js" type="text/javascript"></script>
-<script type="application/javascript">
-var myCountdown2 = new Countdown({
-    							time: 300, 
-									width:150, 
-									height:80, 
-									rangeHi:"minute"	// <- no comma on last item!
-									});
-
-</script>
-
-</div>
+Error in eval(expr, envir, enclos) : 
+  could not find function "gen.factorial"
+```
